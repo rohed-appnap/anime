@@ -7,9 +7,8 @@ export default async function Home() {
   const data = await fetchAnime();
 
   return (
-    <main className="bg-black px-[5rem]">
+    <main className="px-[7.25rem]">
       <Hero />
-
       <div className="grid md:grid-cols-3 lg:grid-cols-4">
         {data.map((anime) => (
           <AnimeCard key={anime.id} anime={anime} />
