@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 import AnimeCard from "./AnimeCard";
 
 function LoadMore() {
-  const [page, setPage] = useState(3);
+  const [page, setPage] = useState(2);
 
   const { ref, inView } = useInView();
   const [isLoading, setIsLoading] = useState(true);
