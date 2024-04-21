@@ -19,3 +19,19 @@ export async function fetchSimilarAnimies(id) {
   const data = response.json();
   return data;
 }
+
+export async function fetchAnimieScreenshots(id) {
+  const response = await fetch(
+    `https://shikimori.one/api/animes/${id}/screenshots`
+  );
+  const data = response.json();
+  return data;
+}
+
+export async function fetchAnimieExternalLinks(id) {
+  const response = await fetch(
+    `https://shikimori.one/api/animes/${id}/external_links`
+  );
+  const data = response.json();
+  return data;
+}
