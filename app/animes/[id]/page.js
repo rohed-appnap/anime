@@ -82,8 +82,8 @@ async function Animes({ params }) {
         Similar Anime
       </h1>
       <div className="flex justify-between flex-wrap pt-[2rem]">
-        {similarData.slice(0, 4).map((item) => (
-          <AnimeCard anime={item} />
+        {similarData.slice(0, 4).map((item, index) => (
+          <AnimeCard anime={item} key={index} />
         ))}
       </div>
     </div>
