@@ -2,6 +2,7 @@ import {
   fetchAnimeDetails,
   fetchAnimieExternalLinks,
   fetchAnimieScreenshots,
+  fetchAnimieVideos,
   fetchSimilarAnimies,
 } from "@/app/action";
 import AnimeCard from "@/components/AnimeCard";
@@ -14,20 +15,36 @@ async function Animes({ params }) {
   const similarData = await fetchSimilarAnimies(params.id);
   const screenShots = await fetchAnimieScreenshots(params.id);
   const externalLinks = await fetchAnimieExternalLinks(params.id);
+  const videoUrl = await fetchAnimieVideos(params.id);
 
   return (
-    <div className="pt-[5rem] px-[7.25rem]">
-      <div className="flex flex-col md:flex-row justify-between gap-[5rem] items-center">
-        <div className="relative w-full">
-          <Image
-            src={`https://shikimori.one${data.image.original}`}
-            alt={data.name}
-            height={500}
-            width={500}
-            className="rounded-xl"
-          />
+    <div className="pt-[3rem] px-[1.25rem] md:px-[3.25rem] lg:px-[7.25rem]">
+      <div className="flex flex-col md:flex-row justify-between gap-[2rem] pb-[2rem] ">
+        <div className="flex gap-2">
+          <div className="flex flex-col mt-[1rem] gap-2 flex-wrap">
+            {screenShots.slice(0, 8).map((imageData, index) => (
+              <Image
+                src={`https://shikimori.one${imageData.original}`}
+                alt={data.name}
+                height={100}
+                width={100}
+                className=""
+                key={index}
+              />
+            ))}
+          </div>
+          <div className="w-full">
+            <Image
+              src={`https://shikimori.one${data.image.original}`}
+              alt={data.name}
+              height={500}
+              width={500}
+              className="rounded-xl"
+            />
+          </div>
         </div>
-        <div className="">
+
+        <div className="w-full md:w-[70%]">
           <h1 className="font-bol text-[3rem]">{data.name}</h1>
           <p className="pt-[2rem]">{data.description}</p>
           <div className="flex mt-[1rem] gap-2 flex-wrap ">
@@ -42,19 +59,22 @@ async function Animes({ params }) {
               </Link>
             ))}
           </div>
+
+          <div className="flex mt-[1rem] gap-2 flex-wrap">
+            {videoUrl.slice(0, 1).map((video, index) => (
+              <iframe
+                className="rounded-lg w-full md:w-[60%]"
+                src={video.player_url}
+                height="380"
+                style={{ border: 0 }}
+                allow="fullscreen"
+                loading="lazy"
+                role="presentation"
+                key={index}
+              ></iframe>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="flex mt-[1rem] gap-2 flex-wrap">
-        {screenShots.slice(0, 8).map((imageData, index) => (
-          <Image
-            src={`https://shikimori.one${imageData.original}`}
-            alt={data.name}
-            height={100}
-            width={100}
-            className=""
-            key={index}
-          />
-        ))}
       </div>
 
       <hr />

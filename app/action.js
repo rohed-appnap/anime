@@ -35,3 +35,9 @@ export async function fetchAnimieExternalLinks(id) {
   const data = response.json();
   return data;
 }
+
+export async function fetchAnimieVideos(id) {
+  const response = await fetch(`https://shikimori.one/api/animes/${id}/videos`);
+  const data = response.json();
+  return data;
+}
