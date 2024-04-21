@@ -1,11 +1,12 @@
 import Image from "next/image";
 
 function AnimeCard({ anime }) {
+  console.log(anime);
   return (
     <div className="max-w-sm rounded relative w-full">
       <div className="relative w-full h-[37vh]">
         <Image
-          src={anime.image.original}
+          src={`https://shikimori.one${anime.image.original}`}
           alt={anime.name}
           fill
           className="rounded-xl"
