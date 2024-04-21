@@ -14,7 +14,10 @@ export default async function Home() {
           <AnimeCard key={anime.id} anime={anime} />
         ))}
       </div>
-      <LoadMore />
+      {/* <LoadMore /> */}
+      <div id="test1" className="bg-black h-[30rem]"></div>
+
+      <div id="test2" className="h-[30rem] border mt-[5rem]"></div>
     </main>
   );
 }
